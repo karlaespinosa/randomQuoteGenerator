@@ -42,7 +42,8 @@ body {
   position: absolute;
 }
 
-.source {
+.source,
+.category {
   font-size: 1.25rem;;
   letter-spacing: 0.05em;
   line-height: 1.1;
@@ -58,6 +59,7 @@ body {
   font-style: italic;
 }
 
+
 .citation:before {
   content: ", ";
   font-style: normal;
@@ -67,6 +69,12 @@ body {
   content: ", ";
   font-style: normal;
 }
+
+.category:before {
+  content: ", ";
+  font-style: italic;
+}
+
 
 #loadQuote {
   position: fixed;

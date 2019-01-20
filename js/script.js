@@ -1,5 +1,5 @@
 var quoteBox = document.getElementById("quote-box");
-var showQuote = document.getElementById("loadQuote");
+var loadQuote = document.getElementById("loadQuote");
 var body = document.querySelector("body");
 var message;
 
@@ -10,7 +10,8 @@ var quotes = [
     quote:"There are things our souls want, and mine wants you.", 
     source: "Cassandra Clare", 
     citation: "City of Heavenly Fire",
-    year: 2014
+    year: 2014,
+    category: "Fantasy"
   },
   {
     quote:"So, I guess we are who we are for a lot of reasons. And maybe we'll never know most of them.", 
@@ -31,7 +32,8 @@ var quotes = [
   {
     quote:"I bring out the worst in you and you bring out the best in me.", 
     source: "Anna Todd", 
-    year: 2014
+    year: 2014,
+    category: "Young Adult"
   },
   {
     quote:"You love me. Real or not real?. I tell him, Real.", 
@@ -47,21 +49,27 @@ var quotes = [
 
 //Get random quote
 function getRandomQuote(arr){
-  var randomNum = Math.floor(Math.random() * arr.length + 1);    
-  return arr[randomNum];
+  var randomNum = Math.floor(Math.random() * arr.length);   
+  return arr[randomNum];  
 }
 
 //Print Random Quote
 function printQuote(){
-  var randomQuote = getRandomQuote(quotes);
+  var randomQuote = getRandomQuote(quotes);  
   message = '<p class="quote">' + randomQuote.quote + '</p>';
-  message += '<p class="source">' + randomQuote.source + '</p>';
+  message += '<p class="source">' + randomQuote.source;
   if(randomQuote.citation){
-    message += '<span class="citation">' + randomQuote.citation + '</span>';
+    message += '<span class="citation">' + randomQuote.citation + '</span>'; 
   }
   if(randomQuote.year){
-    message += '<span class="year">' + randomQuote.year + '</span>';
+    message += '<span class="year">' + randomQuote.year + '</span>';   
   }
+
+ if(randomQuote.category) {
+    message += '<span class="category">' + randomQuote.category + '</span>';
+  }
+
+  message += '</p>';
 
   return message;
 }
@@ -78,9 +86,9 @@ function getRGBColor(){
 setInterval(function(){
   quoteBox.innerHTML = printQuote();
   body.style.backgroundColor = getRGBColor();
-}, 15000);
+}, 8000);
 
-showQuote.addEventListener("click", function(){
+loadQuote.addEventListener("click", function(){
   quoteBox.innerHTML = printQuote();
   body.style.backgroundColor = getRGBColor();
 });
